@@ -1,0 +1,91 @@
+body {
+    font-family: 'Open Sans';
+}
+h1{
+    font-family: 'Open Sans';
+    color: white;
+    font-size: large;
+    text-align: center;    
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.images {
+  float: left;
+  margin-top: 10px;  
+  margin-left: 20px;
+  margin-right: 10px;
+  padding: 10px;
+}
+/* base styles */
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+section img {
+    height: 50px;
+    width: 120px;
+}
+
+/* site styles */
+
+header {
+   
+    height: 100px;
+}
+
+header section {
+    width: 960px;
+    margin: 0 auto;
+}
+
+header img {
+    float: left;
+    margin-right: 50px;
+    margin-top: 15px;
+}
+
+header nav li {
+    display: inline-block;
+    margin-left: 100px;
+    margin-right: 150px;
+    margin-top: 45px;
+}
+
+main article {
+    float: left; 
+    padding-left: 200px;    
+    border: 100px;
+    margin-bottom: 50px;
+}
+
+main article img {
+    border: 2px red dashed;
+}
+
+#start{
+    background: url('../img/handleUp.png') no-repeat;
+    height:308px;
+    width:121px;
+    border-style: none;
+    outline: none;
+  }
+  
+  #start:active {
+    background: url('../img/handleDown.png');
+  }
+
+ 
+footer {  
+    position:absolute;    
+    height: 20px;
+    bottom:0;
+    left:0;
+    width:100%;
+    color: white;
+    font-size: 15px;
+    text-align: center;     
+}
+  
+ 
