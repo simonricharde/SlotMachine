@@ -54,6 +54,7 @@ Store.setAndLoadCurrentUserByName = function(userName){
   var storeData = JSON.parse(storeDataString); 
   storeData['currentUser'] = userName;
   localStorage.setItem('storeData', JSON.stringify(storeData));
+  return usr;
 }
 
 Store.getAllUsers = function(){
@@ -72,3 +73,4 @@ Store.getCurrentUser = function(){
 
   return this.getUser(storeData['currentUser']);
 }
+
