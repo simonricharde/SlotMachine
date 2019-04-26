@@ -108,18 +108,27 @@ function OnBootstrap() {
 
 
 function randomProduct() {
+  
+  if (currentUser.getAmount()>0) {
+    var randomIdx = Math.floor(Math.random() * Product.allProducts.length);
+    var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
+    var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
 
-  var randomIdx = Math.floor(Math.random() * Product.allProducts.length);
-  var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
-  var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
+    imgContainer.src = Product.allProducts[randomIdx].filepath;
+    imgContainer1.src = Product.allProducts[randomIdxNS1].filepath;
+    imgContainer2.src = Product.allProducts[randomIdxNS2].filepath;
+    lastVisited = [randomIdx,randomIdxNS1,randomIdxNS2];
+    currentUser.plays = currentUser.plays + 1 ;
+    validateWins();
+    UserStore.saveUser(currentUser); 
+  } else if (currentUser.getAmount()<1) {
+    imgContainer.src = SpecImages.allSpecImages[1].filepath;
+    imgContainer1.src = SpecImages.allSpecImages[1].filepath;
+    imgContainer2.src = SpecImages.allSpecImages[1].filepath;
+    alert('Please reset funds from Options Page to continue the play');
+    console.log('Available amount : ' + currentUser.getAmount() );
+  }
 
-  imgContainer.src = Product.allProducts[randomIdx].filepath;
-  imgContainer1.src = Product.allProducts[randomIdxNS1].filepath;
-  imgContainer2.src = Product.allProducts[randomIdxNS2].filepath;
-  lastVisited = [randomIdx,randomIdxNS1,randomIdxNS2];
-  currentUser.plays = currentUser.plays - 1 ;
-  validateWins();
-  UserStore.saveUser(currentUser);
 }
 
 
@@ -137,8 +146,7 @@ function validateWins() {
             mid !== left && mid === right ||
             right === mid && right !== left ) {
     //pair
-    currentUser.pairValue = currentUser.pairValue + 1;
-    
+    currentUser.pairValue = currentUser.pairValue + 1;    
     pairImgContainer.style.display = 'block';
   } else {
     jackpotImgContainer.style.display = 'none';
