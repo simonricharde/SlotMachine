@@ -1,5 +1,14 @@
 'use strict';
 Product.allProducts = [];
+SpecImages.allSpecImages = [];
+var lastVisited = [];
+function SpecImages(name, filepath) {
+  this.name = name;
+  this.filepath = filepath;
+  this.displayedCount=0;
+  this.previousImageIndex=0;
+  SpecImages.allSpecImages.push(this);
+}
 
 // create objects for our Products
 function Product(name, filepath) {
@@ -9,117 +18,130 @@ function Product(name, filepath) {
   this.previousImageIndex=0;
   Product.allProducts.push(this);
 }
-new Product('777','img/slotimages/777.jpg');//0
+//new Product('777','img/slotimages/777.jpg');//0
 new Product('amazonbox','img/slotimages/amazonbox.gif');//1
 new Product('amazondash','img/slotimages/amazondash.gif');//2
-new Product('amazonjackpot','img/slotimages/amazonjackpot.gif');//3
-new Product('Amazon_smart_home_2','img/slotimages/Amazon_smart_home_2.gif');//4
-new Product('apple','img/slotimages/apple.png');//5
-new Product('awards','img/slotimages/awards.jpg');//6
-new Product('aws','img/slotimages/aws.gif');//7
-new Product('ballgif','img/slotimages/ballgif.gif');//8
-new Product('blueberry_final_d','img/slotimages/blueberry_final_d.gif');//9
-new Product('bus','img/slotimages/bus.gif');//10
-new Product('cherry','img/slotimages/cherry.gif');//11
-new Product('cocktail','img/slotimages/cocktail.jpg');//12
-new Product('dance','img/slotimages/dance.gif');//13
-new Product('dog','img/slotimages/dog.gif');//14
-new Product('dollars','img/slotimages/dollars.png');//15
-new Product('fedex','img/slotimages/fedex.gif');//16
-new Product('gameovergif','img/slotimages/gameovergif.gif');//17
-new Product('gold','img/slotimages/gold.jpg');//18
-new Product('golfballs','img/slotimages/golfballs.jpg');//19
-new Product('google','img/slotimages/google.gif');//20
-new Product('grapes','img/slotimages/grapes.gif');//21
-new Product('greeapple','img/slotimages/greeapple.gif');//22
-new Product('greenapple','img/slotimages/greenapple.jpg');//23
-new Product('groupdance','img/slotimages/groupdance.gif');//24
-new Product('jackpot-gif-1-1','img/slotimages/jackpot-gif-1-1.gif');//25
-new Product('jackpot','img/slotimages/jackpot.jpg');//26
-new Product('jackpotcoins','img/slotimages/jackpotcoins.jpg');//27
-new Product('jackpotgif','img/slotimages/jackpotgif.gif');//28
-new Product('kid','img/slotimages/kid.gif');//29
-new Product('loops','img/slotimages/loops.jpg');//30
-new Product('lowcoins','img/slotimages/low coins.jpg');//31
-new Product('melons','img/slotimages/melons.gif');//32
-new Product('packing','img/slotimages/packing.gif');//33
-new Product('products','img/slotimages/products.gif');//34
-new Product('spin','img/slotimages/spin.jpg');//35
-new Product('starberry','img/slotimages/starberry.gif');//36
-new Product('strawberry','img/slotimages/strawberry.jpg');//37
-new Product('surprise_dribbble','img/slotimages/surprise_dribbble.gif');//38
-new Product('winner','img/slotimages/winner.gif');//39
-new Product('YetToWin','img/slotimages/YetToWin.gif');//40
+new Product('Amazon_smart_home_2','img/slotimages/Amazon_smart_home_2.gif');//3
+//new Product('apple','img/slotimages/apple.png');//4
+//new Product('awards','img/slotimages/awards.jpg');//5
+new Product('aws','img/slotimages/aws.gif');//6
+new Product('ballgif','img/slotimages/ballgif.gif');//7
+new Product('blueberry_final_d','img/slotimages/blueberry_final_d.gif');//8
+//new Product('bus','img/slotimages/bus.gif');//9
+new Product('cherry','img/slotimages/cherry.gif');//10
+//new Product('cocktail','img/slotimages/cocktail.jpg');//11
+new Product('dance','img/slotimages/dance.gif');//12
+new Product('dog','img/slotimages/dog.gif');//13
+new Product('fedex','img/slotimages/fedex.gif');//14
+//new Product('gold','img/slotimages/gold.jpg');//15
+//new Product('golfballs','img/slotimages/golfballs.jpg');//16
+//new Product('google','img/slotimages/google.gif');//17
+new Product('grapes','img/slotimages/grapes.gif');//18
+new Product('greeapple','img/slotimages/greeapple.gif');//19
+//new Product('greenapple','img/slotimages/greenapple.jpg');//20
+new Product('groupdance','img/slotimages/groupdance.gif');//21
+new Product('kid','img/slotimages/kid.gif');//22
+//new Product('loops','img/slotimages/loops.jpg');//23
+new Product('melons','img/slotimages/melons.gif');//24
+new Product('packing','img/slotimages/packing.gif');//25
+new Product('products','img/slotimages/products.gif');//26
+new Product('starberry','img/slotimages/starberry.gif');//27
+//new Product('strawberry','img/slotimages/strawberry.jpg');//28
+new Product('surprise_dribbble','img/slotimages/surprise_dribbble.gif');//29
+
+new SpecImages('dollars','img/slotimages/dollars.png');//0
+new SpecImages('gameovergif','img/slotimages/gameovergif.gif');//1
+new SpecImages('jackpot-gif-1-1','img/slotimages/jackpot-gif-1-1.gif');//2
+new SpecImages('jackpot','img/slotimages/jackpot.jpg');//3
+new SpecImages('jackpotcoins','img/slotimages/jackpotcoins.jpg');//4
+new SpecImages('jackpotgif','img/slotimages/jackpotgif.gif');//5
+new SpecImages('spin','img/slotimages/spin.jpg');//6
+new SpecImages('winner','img/slotimages/winner.gif');//7
+new SpecImages('YetToWin','img/slotimages/YetToWin.gif');//8
+new SpecImages('pairbg','img/slotimages/pairbg.png');//9
+new SpecImages('lowcoins','img/slotimages/low coins.jpg');//10
+new SpecImages('amazonjackpot','img/slotimages/amazonjackpot.gif');//11
 
 var imgContainer = document.getElementById('slot1');
 var imgContainer1 = document.getElementById('slot2');
 var imgContainer2 = document.getElementById('slot3');
 var imgContainer3 = document.getElementById('start');
+var jackpotImgContainer = document.getElementById('jackpotImage');
+var pairImgContainer = document.getElementById('pairImage');
+var jackpotImg = document.getElementById('jackpotImageslot');
+var pairImg = document.getElementById('pairImageslot');
 
-imgContainer3.addEventListener('click', randomProduct3);
+pairImg.src = SpecImages.allSpecImages[9].filepath;
+jackpotImg.src = SpecImages.allSpecImages[2].filepath;
 
-imgContainer.src = Product.allProducts[35].filepath;
-imgContainer1.src = Product.allProducts[39].filepath;
-imgContainer2.src = Product.allProducts[40].filepath;
+jackpotImgContainer.style.display = 'none';
+pairImgContainer.style.display = 'none';
 
-var skip  = [];
-skip[0]='17'; //game over
-skip[1]='35'; //spin
-skip[2]='39'; //winner
-skip[3]='40'; //winner
-skip[4]='3'; //amazonjackpot
-skip[4]='3'; //amazonjackpot
-skip[4]='3'; //amazonjackpot
-skip[4]='3'; //amazonjackpot
-skip[4]='3'; //amazonjackpot
-skip[4]='3'; //amazonjackpot
+imgContainer3.addEventListener('click', randomProduct);
 
+imgContainer.src = SpecImages.allSpecImages[6].filepath;
+imgContainer1.src = SpecImages.allSpecImages[6].filepath;
+imgContainer2.src = SpecImages.allSpecImages[6].filepath;
+lastVisited = [6,6,6];
 
 function gameOver() {
-    imgContainer.src = Product.allProducts[17].filepath;
-    imgContainer1.src = Product.allProducts[17].filepath;
-    imgContainer2.src = Product.allProducts[17].filepath;
+  imgContainer.src = SpecImages.allSpecImages[1].filepath;
+  imgContainer1.src = SpecImages.allSpecImages[1].filepath;
+  imgContainer2.src = SpecImages.allSpecImages[1].filepath;
+}
+var currentUser = null;
+OnBootstrap();
+
+function OnBootstrap() {
+  console.log( UserStore.getCurrentUser());
+  currentUser = UserStore.getCurrentUser();
+  // for testing
+  if(currentUser === null){
+    // redirect to options page . window.locaton = /options.html
+    // showOptions();
+    console.log('in null and ser');
+    currentUser = new User('testUser');
+    UserStore.saveUser(currentUser);
+    console.log(currentUser );
+  }
 }
 
-function randomProduct3() {
-
-    var randomIdx = Math.floor(Math.random() * Product.allProducts.length);
-    var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
-    var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
-    while (skip.includes(randomIdx) || skip.includes(randomIdxNS1) | skip.includes(randomIdxNS2)) {
-         randomIdx = Math.floor(Math.random() * Product.allProducts.length);
-         randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
-         randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
-    }
-    
-    imgContainer.src = Product.allProducts[randomIdx].filepath;
-    imgContainer1.src = Product.allProducts[randomIdxNS1].filepath;
-    imgContainer2.src = Product.allProducts[randomIdxNS2].filepath;
-}
 
 function randomProduct() {
-    var randomIdx = Math.floor(Math.random() * Product.allProducts.length);
-    var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
-    var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
-    imgContainer.src = Product.allProducts[1].filepath;
-    imgContainer1.src = Product.allProducts[2].filepath;
-    imgContainer2.src = Product.allProducts[3].filepath;
+
+  var randomIdx = Math.floor(Math.random() * Product.allProducts.length);
+  var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
+  var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
+
+  imgContainer.src = Product.allProducts[randomIdx].filepath;
+  imgContainer1.src = Product.allProducts[randomIdxNS1].filepath;
+  imgContainer2.src = Product.allProducts[randomIdxNS2].filepath;
+  lastVisited = [randomIdx,randomIdxNS1,randomIdxNS2];
+  currentUser.plays = currentUser.plays - 1 ;
+  validateWins();
+  UserStore.saveUser(currentUser);
 }
 
-function randomProduct1() {
-    var randomIdx = Math.floor(Math.random() * Product.allProducts.length);
-    var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
-    var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
-    imgContainer.src = Product.allProducts[1].filepath;
-    imgContainer1.src = Product.allProducts[2].filepath;
-    imgContainer2.src = Product.allProducts[3].filepath;
-}
 
-function randomProduct2() {
-    var randomIdx = Math.floor(Math.random() * Product.allProducts.length);
-    var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
-    var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
-    imgContainer.src = Product.allProducts[1].filepath;
-    imgContainer1.src = Product.allProducts[2].filepath;
-    imgContainer2.src = Product.allProducts[3].filepath;
+function validateWins() {
+  var left = Product.allProducts[lastVisited[0]];
+  var mid = Product.allProducts[lastVisited[1]];
+  var right = Product.allProducts[lastVisited[2]];
+  if (left === mid && left === right ||
+        mid === left && mid === right ||
+        right === mid && right === left)
+  { //jackpot
+    currentUser.jackpotValue = currentUser.jackpotValue + 1;
+    jackpotImgContainer.style.display = 'block';
+  } else if (left === mid && left !== right ||
+            mid !== left && mid === right ||
+            right === mid && right !== left ) {
+    //pair
+    currentUser.pairValue = currentUser.pairValue + 1;
+    
+    pairImgContainer.style.display = 'block';
+  } else {
+    jackpotImgContainer.style.display = 'none';
+    pairImgContainer.style.display = 'none';
+  }
 }
