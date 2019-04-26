@@ -45,7 +45,7 @@ UserStore.getUser = function(userName) {
 
   if(userStoreData['allUsers'] === null)
     return null;
-  return userStoreData['allUsers'][userName];
+  return convertToUser(userStoreData['allUsers'][userName]);
 }
 
 UserStore.saveUser = function(user){
@@ -71,7 +71,7 @@ UserStore.setAndLoadCurrentUserByName = function(userName){
   var userStoreData = JSON.parse(userStoreDataString); 
   userStoreData['currentUser'] = userName;
   localStorage.setItem('userStoreData', JSON.stringify(userStoreData));
-  return usr;
+  return convertToUser(usr);
 }
 
 UserStore.getAllUsers = function(){
@@ -79,6 +79,11 @@ UserStore.getAllUsers = function(){
   var userStoreData = JSON.parse(userStoreDataString); 
   if(userStoreData === null)
     return null;
+  
+    var userArray = [];
+  var keys = Object.keys(userStoreData['allUsers']);
+  for(var i = 0; i < keys.length ; i++)
+    userArray.push( convertToUser( userStoreData['allUsers'][ keys[i] ]) );  
   return userStoreData['allUsers'];
 }
 
@@ -100,6 +105,14 @@ UserStore.getCurrentUser = function(){
   if(userStoreData === null)
     return null;
 
-  return this.getUser(userStoreData['currentUser']);
+  return convertToUser( this.getUser(userStoreData['currentUser']) );
 }
 
+//This is to create User object so the JS prototype methods work
+function convertToUser(object) {
+  var user = new User(object.name);
+  user.plays = object.plays;
+  user.jackpots = object.jackpots;
+  user.pairs = object.pairs;
+  return user;
+}
