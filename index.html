@@ -1,32 +1,119 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Slot Machine</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body background="img/backround.jpg" height="460" width="1000">
-        <header>
-            <section>                
-                <nav>                    
-                    <ul id="nav">
-                        <li><a href="#aboutus" onclick="showAboutUs()">Game</a></li>                                          
-                        <li><a href="#specials" onclick="showSpecials()">Options</a></li>
-                        <li><a href="#contactus" onclick="showContactUs()">Stats</a></li>
-                    </ul>                    
-                </nav>               
-            </section>
-        </header>
-        <main>
-                           
-        <h1>Slot Machine</h1>   
-        <article> 
-            <img id="slot1" src="" height="200" width="200">
-            <img src="slot2" height="200" width="200">
-            <img src="slot3" height="200" width="200">
-            <button id="start"></button>           
-    </article>
-  </main>
+    <link rel="stylesheet" href="css/options.css">
+    <link rel="stylesheet" href="css/stats.css">
+</head>
+
+<body background="img/backround.jpg" height="460" width="1000">
+    <header>
+        <section>
+            <nav>
+                <ul id="nav">
+                    <li><a href="#game" onclick="showGame()">Game</a></li>
+                    <li><a href="#options" onclick="showOptions()">Options</a></li>
+                    <li><a href="#stats" onclick="showStats()">Stats</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+
+        <h1>Slot Machine</h1>
+        <section id="game">
+            <img id="slot1" height="250" width="250">
+            <img id="slot2" height="250" width="250">
+            <img id="slot3" height="250" width="250">
+            <button id="start"></button>
+        </section>
+
+        <section id="options" class="toggle" style="display:none">
+            <aside class="row">
+                <aside class="column">
+                    <h1>Game Instructions</h1>
+
+                    <ul class="list-class">
+                        <li>Each spin costs $1</li>
+                        <li>Starting balance: $25</li>
+                        <li>Pair: $2 (first two images are the same)</li>
+                        <li>Jackpot: $5 (three matching images)</li>
+                        <li>Wildcard: These images show up in easy and medium difficuly games. The wildcard image counts
+                            as a match for every other image</li>
+                        <li>Once you hit a balance of $0, you must restart your game</li>
+                        <li>Select a player above or create a new one</li>
+                        <li>See the stats page to see your game ranking and other statistics</li>
+                    </ul>
+                </aside>
+
+
+                <aside class="column">
+                    <h3>
+                        <article class="article-class">
+                            <label for="fname">Create a User</label>
+                            <input type="text" id="fname" required name="fulltname" placeholder="Your name..">
+                            <input type="submit" value="Create User">
+                        </article>
+                    </h3>
+
+                    <h3>
+                        <article class="article-class">
+                            <label for="fname">Select a User</label>
+                            <select id="userList">
+                                <option selected>Select</option>
+                            </select>
+                            <input type="submit" value="Let's Play">
+                        </article>
+                    </h3>
+                    <h3>
+                        <article class="article-class">
+                            <label for="fname">Game Settings</label>
+                            <select id="userList">
+                                <option selected>Select</option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                            <label for="fname">Reset Balance</label>
+                            <input type="submit" value="Reset Balance   (25$)">
+                        </article>
+                    </h3>
+                </aside>
+            </aside>
+        </section>
+
+        <section id="stats" class="toggle" style="display:none">
+            <aside class="row">
+                <article class="players-class">
+                        <label for="fname"><h1>Top Players</h1></label>                    
+                    <h3>
+                        <ol id="playerList">
+                            <li>Simon</li>
+                            <li>Simon</li>
+                            <li>Simon</li>
+                        </ol>
+                    </h3>
+                </article>
+
+                <aside class="column">
+                    <h1>Game Instructions</h1>
+
+                </aside> 
+                <aside class="column">
+                        <h1>Game Instructions</h1>
+    
+                    </aside>
+                    <aside class="column">
+                            <h1>Game Instructions</h1>
+        
+                        </aside>                
+            </aside>
+        </section>
+    </main>
     <script src="js/app.js"></script>
+    <script src="js/homepage.js"></script>
     <footer> &copy; SlotMachine</footer>
 </body>
