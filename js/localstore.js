@@ -7,9 +7,26 @@ function User(Name) {
   this.pairs = 0;
 }
 
+User.prototype.resetUser = function() {
+  this.plays = 0;
+  this.jackpots = 0;
+  this.pairs = 0;
+}
 
+var initialAmount = 25;
+var pairValue = 2;
+var jackpotValue = 5;
+var playValue = 1;
+
+User.prototype.getAmount = function() {
+  return initialAmount + (this.jackpots * jackpotValue) + (this.pairs * pairValue) - (this.plays * playValue);
+}
+
+User.prototype.lossCount = function() {
+  return this.plays - (this.jackpots + this.pairs);
+}
 /* Local Data Store template
-var storeData = {
+var userStoreData = {
   'allUsers' : {
     'user1' : {}, 
     'user2' : {}, 
@@ -19,58 +36,70 @@ var storeData = {
 };
 
 */
-var Store = {};
-Store.getUser = function(userName) {
-  var storeDataString = localStorage.getItem('storeData');
-  if(storeDataString === null)
+var UserStore = {};
+UserStore.getUser = function(userName) {
+  var userStoreDataString = localStorage.getItem('userStoreData');
+  if(userStoreDataString === null)
     return null;
-  var storeData = JSON.parse(storeDataString);
+  var userStoreData = JSON.parse(userStoreDataString);
 
-  if(storeData['allUsers'] === null)
+  if(userStoreData['allUsers'] === null)
     return null;
-  return storeData['allUsers'][userName];
+  return userStoreData['allUsers'][userName];
 }
 
-Store.saveUser = function(user){
-  var storeDataString = localStorage.getItem('storeData');
-  var storeData = JSON.parse(storeDataString);
-  if(storeData === null)
+UserStore.saveUser = function(user){
+  var userStoreDataString = localStorage.getItem('userStoreData');
+  var userStoreData = JSON.parse(userStoreDataString);
+  if(userStoreData === null)
   {
-    storeData = {
+    userStoreData = {
       'allUsers': {}
     };
   }
-  storeData['allUsers'][user.name] = user;
-  storeData['currentUser'] = user.name;
-  localStorage.setItem('storeData', JSON.stringify(storeData));
+  userStoreData['allUsers'][user.name] = user;
+  userStoreData['currentUser'] = user.name;
+  localStorage.setItem('userStoreData', JSON.stringify(userStoreData));
 }
 
-Store.setAndLoadCurrentUserByName = function(userName){
+UserStore.setAndLoadCurrentUserByName = function(userName){
   var usr = this.getUser(userName);
   if(usr == null)
     return null;
   
-  var storeDataString = localStorage.getItem('storeData');
-  var storeData = JSON.parse(storeDataString); 
-  storeData['currentUser'] = userName;
-  localStorage.setItem('storeData', JSON.stringify(storeData));
+  var userStoreDataString = localStorage.getItem('userStoreData');
+  var userStoreData = JSON.parse(userStoreDataString); 
+  userStoreData['currentUser'] = userName;
+  localStorage.setItem('userStoreData', JSON.stringify(userStoreData));
   return usr;
 }
 
-Store.getAllUsers = function(){
-  var storeDataString = localStorage.getItem('storeData');
-  var storeData = JSON.parse(storeDataString); 
-  if(storeData === null)
+UserStore.getAllUsers = function(){
+  var userStoreDataString = localStorage.getItem('userStoreData');
+  var userStoreData = JSON.parse(userStoreDataString); 
+  if(userStoreData === null)
     return null;
-  return storeData['allUsers'];
+  return userStoreData['allUsers'];
 }
 
-Store.getCurrentUser = function(){
-  var storeDataString = localStorage.getItem('storeData');
-  var storeData = JSON.parse(storeDataString); 
-  if(storeData === null)
+UserStore.getAllUserNames = function(){
+  var userStoreDataString = localStorage.getItem('userStoreData');
+  var userStoreData = JSON.parse(userStoreDataString); 
+  if(userStoreData === null)
+    return null;
+  var userNamesArray = [];
+  var keys = Object.keys(userStoreData['allUsers']);
+  for(var i = 0; i < keys.length ; i++)
+    userNamesArray.push(userStoreData['allUsers'][ keys[i] ].name);
+  return userNamesArray;
+}
+
+UserStore.getCurrentUser = function(){
+  var userStoreDataString = localStorage.getItem('userStoreData');
+  var userStoreData = JSON.parse(userStoreDataString); 
+  if(userStoreData === null)
     return null;
 
-  return this.getUser(storeData['currentUser']);
+  return this.getUser(userStoreData['currentUser']);
 }
 
