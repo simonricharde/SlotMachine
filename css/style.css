@@ -66,7 +66,7 @@ header nav li {
     display: inline-block;
     margin-left: 100px;
     margin-right: 150px;
-    margin-top: 45px;
+    margin-top: 25px;
 }
 
 main section {
@@ -92,6 +92,11 @@ main section img {
     background: url('../img/handleDown.png');
   }
 
+  .userData {   
+    color: white;
+    font-size: large;
+    text-align: center;
+}
  
 footer {  
     position:absolute;    
@@ -103,79 +108,3 @@ footer {
     font-size: 15px;
     text-align: center;     
 }
-
-* {
-    box-sizing: border-box;    
-  }
-.column {
-    float: left;
-    height: 800px;
-    width: 50%;
-    padding: 15px;
-    border: 2px red dashed;
-  }
-
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;    
-  }
-  
-@media screen and (max-width:600px) {
-    .column {
-      width: 100%;
-    }
-  }
-
-  input[type=submit] {
-    background-color: black;
-    color: white;
-    padding: 12px 20px;
-    margin-left: 200px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover {
-    background-color: red;
-  }
-
-  input[type=text], input[type=number],input[type=email], input[type=tel], select, textarea {
-    font-family: 'Sans';
-    width: 50%;
-    padding: 12px;
-    margin-left: 200px;
-    border: 1px solid #ccc;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-  }
-
-  label {
-    font-family: 'Sans';
-    width: 100%;
-    padding: 12px;
-    margin-left: 200px;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-  }
-
-  section aside ul li {
-    list-style: circle; 
-    margin-left: 100px; 
-    margin-top: 100px;
-    font-family: 'Open Sans';   
-    color: white;
-    font-size: large;  
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  .article-class {
-      padding-top: 30px;
-      padding-bottom: 25px;
-      margin-top: 40px;
-      margin-bottom: 70px;
-      border: 2px red dashed;
-  }
