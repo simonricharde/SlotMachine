@@ -84,7 +84,7 @@ UserStore.getAllUsers = function(){
   var keys = Object.keys(userStoreData['allUsers']);
   for(var i = 0; i < keys.length ; i++)
     userArray.push( convertToUser( userStoreData['allUsers'][ keys[i] ]) );  
-  return userStoreData['allUsers'];
+  return userArray;
 }
 
 UserStore.getAllUserNames = function(){
