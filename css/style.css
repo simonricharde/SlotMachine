@@ -92,11 +92,26 @@ main section img {
     background: url('../img/handleDown.png');
   }
 
-  .userData {   
-    color: white;
-    font-size: large;
-    text-align: center;
-}
+  * {
+    box-sizing: border-box;    
+  }
+
+  .gamerow:after {
+    content: "";
+    display: table;
+    clear: both;    
+  }
+
+  .gamecolumn {
+    float: left;
+    height: 100px;
+    width: 40%;
+    padding: 15px;
+    border: 2px red dashed;   
+    margin-top: 40px;    
+    margin-right: 10%;
+    margin-bottom: 2%;    
+  }
  
 footer {  
     position:absolute;    

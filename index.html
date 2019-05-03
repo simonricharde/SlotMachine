@@ -22,31 +22,33 @@
         </section>
     </header>
     <main>
-
-        <section class="userData">
-            <aside id="displayName" >            
-            </aside>
-            <aside id="displayLevel">
-            </aside>
-            <aside id="displayBalance">
-            </aside>
-        </section>
-
-
+        
+         
         <section id="game">
+                <aside class="gamerow">
+                        
+                        <aside class="gamecolumn" id="displayName" style="display: none">  
+                            <h1>Welcome</h1>          
+                        </aside>                       
+                        <aside class="gamecolumn" id="displayBalance" style="display: none">
+                                <h1>Balance: </h1>
+                        </aside>
+                </aside>
+            <aside class="gamerow">
+                <img id="slot1" height="250" width="250">
+                <img id="slot2" height="250" width="250">
+                <img id="slot3" height="250" width="250">
+                <button id="start"></button>
+                <aside id="pairImage" style="display: none">
+                    <img id="pairImageslot" height="250" width="250">
+                </aside>
+                <aside id="jackpotImage" style="display: none">
+                    <img id="jackpotImageslot" height="250" width="250">
+                </aside>
 
-            <img id="slot1" height="250" width="250">
-            <img id="slot2" height="250" width="250">
-            <img id="slot3" height="250" width="250">
-            <button id="start"></button>
-            <aside id="pairImage" style="display: none">
-                <img id="pairImageslot" height="250" width="250">
-            </aside>
-            <aside id="jackpotImage" style="display: none">
-                <img id="jackpotImageslot" height="250" width="250">
             </aside>
         </section>
-
+    
         <section id="options" class="toggle" style="display:none">
             <aside class="row">
                 <aside class="column">
@@ -78,12 +80,14 @@
                     </h3>
 
                     <h3>
+                        <form id="selectuser_form">
                         <article class="article-class">
                             <label for="fname">Select a User</label>
                             <select id="userList">
                             </select>
                             <input type="submit" value="Let's Play">
                         </article>
+                    </form>
                     </h3>
                     <h3>
                         <article class="article-class">
