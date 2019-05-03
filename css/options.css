@@ -27,7 +27,6 @@ h3{
 }
 
 
-
 * {
     box-sizing: border-box;    
   }
@@ -47,9 +46,9 @@ h3{
   }
   
 @media screen and (max-width:600px) {
-    .column {
-      width: 100%;
-    }
+  .column {
+    width: 100%;
+  }
   }
 
   input[type=submit] {
@@ -105,8 +104,7 @@ h3{
   }
 
   footer {   
-    position:absolute;    
-    height: auto;
+    position: static;     
     bottom:0;
     left:0;
     width:100%;

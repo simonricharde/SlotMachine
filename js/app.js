@@ -22,7 +22,6 @@ function showStats() {
 function check() {
   window.scrollTo( 0, 0 );
   document.getElementById('displayName').display='block';
-  document.getElementById('displayLevel').display='block';
   document.getElementById('displayBalance').display='block';
   
   var selectId = document.getElementById('userList');
@@ -45,11 +44,28 @@ function check() {
 function createNewuser(event) {
   event.preventDefault();
   var newUserName = event.target.fname.value;
+ 
   var userObj = new User(newUserName);
   UserStore.saveUser(userObj);
   newuserFormId.reset();
   check();
 }
 
+function selectUser(event) {
+  event.preventDefault();
+  var e = document.getElementById('userList');
+  var strUser = e.options[e.selectedIndex].value;
+  
+  document.getElementById('stats').style.display = 'none';
+  document.getElementById('options').style.display = 'none';
+  document.getElementById('game').style.display = 'block';
+  var displayNameId = document.getElementById('displayName');
+  displayNameId.innerHTML = '<h1>Welcome '+ strUser+'!</h1>';
+  displayNameId.style.display = 'block';
+  document.getElementById('displayBalance').style.display = 'block';
+}
+
 var newuserFormId = document.getElementById('newuser_form');
+var selectuserFormId = document.getElementById('selectuser_form');
 newuserFormId.addEventListener('submit', createNewuser);
+selectuserFormId.addEventListener('submit', selectUser);
