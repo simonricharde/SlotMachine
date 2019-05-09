@@ -57,15 +57,18 @@ function selectUser(event) {
   var e = document.getElementById('userList');
   var strUser = e.options[e.selectedIndex].value;
   
-  var displayNameId = document.getElementById('displayName');
-  displayNameId.innerHTML = '<h1>Welcome '+ strUser+'!</h1>';
-  displayNameId.style.display = 'block';
-  document.getElementById('displayBalance').style.display = 'block';
+  var currentUser = UserStore.setAndLoadCurrentUserByName(strUser);
 
-  currentUser = UserStore.setAndLoadCurrentUserByName(strUser);
-  var displayBalanceElement = document.getElementById('displayBalance');
-  displayBalanceElement.innerHTML = '<h1>Balance '+ currentUser.getAmount()+'!</h1>';
-  displayBalanceElement.style.display = 'block';
+  refreshUserDetailsOptionsPage();
+
+  // var displayNameId = document.getElementById('displayName');
+  // displayNameId.innerHTML = '<h1>Welcome '+ strUser+'!</h1>';
+  // displayNameId.style.display = 'block';
+  // document.getElementById('displayBalance').style.display = 'block';
+
+  // var displayBalanceElement = document.getElementById('displayBalance');
+  // displayBalanceElement.innerHTML = '<h1>Balance '+ currentUser.getAmount()+'!</h1>';
+  // displayBalanceElement.style.display = 'block';
 }
 
 var newuserFormId = document.getElementById('newuser_form');
@@ -73,5 +76,28 @@ var selectuserFormId = document.getElementById('selectuser_form');
 newuserFormId.addEventListener('submit', createNewuser);
 selectuserFormId.addEventListener('submit', selectUser);
 
+var resetuserFormId = document.getElementById('resetuser_form');
+resetuserFormId.addEventListener('submit', resetUserBalance);
 
+function resetUserBalance(event) {
+  console.log("in resetUserBalance user");
+  event.preventDefault();
+  var currentUser = UserStore.getCurrentUser();
+  console.log(currentUser);
+  currentUser.resetUser();
+  UserStore.saveUser(currentUser);
+  refreshUserDetailsOptionsPage();
+}
 
+function refreshUserDetailsOptionsPage(){
+  var currentUser = UserStore.getCurrentUser();
+  console.log(currentUser);
+  console.log(currentUser.getAmount());
+  var displayNameId = document.getElementById('displayName');
+  displayNameId.innerHTML = '<h1>Welcome '+ currentUser.name+'!</h1>';
+  displayNameId.style.display = 'block';
+
+  var displayBalanceElement = document.getElementById('displayBalance');
+  displayBalanceElement.innerHTML = '<h1>Balance '+ currentUser.getAmount()+'!</h1>';
+  displayBalanceElement.style.display = 'block';
+}

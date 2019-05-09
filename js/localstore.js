@@ -11,6 +11,8 @@ User.prototype.resetUser = function() {
   this.plays = 0;
   this.jackpots = 0;
   this.pairs = 0;
+  console.log('in reset');
+  console.log(this)
 }
 
 var initialAmount = 25;
