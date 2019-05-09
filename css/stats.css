@@ -1,6 +1,11 @@
 body {
     font-family: 'Open Sans';
 }
+
+aside.row{
+  width: 1050px;
+  height: 2000px;
+}
 h1{
     font-family: 'Open Sans';
     color: white;
@@ -44,10 +49,10 @@ footer {
 .column {
     float: left;
     height: 800px;
-    width: 40%;
-    padding: 15px;
+    width: 30%;
+    padding: 12px;
     border: 2px red dashed;   
-    margin-right: 10%;
+    margin-right: 25px;
     margin-bottom: 10%;
   }
  
@@ -80,7 +85,7 @@ footer {
   }
 
   .players-class {
-      width: 2000px;
+      width: 100%;
       padding-top: 30px;
       padding-bottom: 25px;
       margin-top: 40px;

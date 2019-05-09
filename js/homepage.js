@@ -100,12 +100,28 @@ function OnBootstrap() {
     // redirect to options page . window.locaton = /options.html
     // showOptions();
     console.log('in null and ser');
-    currentUser = new User('testUser');
-    UserStore.saveUser(currentUser);
-    console.log(currentUser );
+    window.location = 'options.html';
+    // currentUser = new User('testUser');
+    // UserStore.saveUser(currentUser);
+    // console.log(currentUser );
+  }else{
+    console.log(currentUser);
+    refreshUserDetailsGamePage();
   }
 }
 
+function refreshUserDetailsGamePage(){
+  currentUser = UserStore.getCurrentUser();
+  var displayNameId = document.getElementById('displayName');
+  displayNameId.innerHTML = '<h1>Welcome '+ currentUser.name+'!</h1>';
+  displayNameId.style.display = 'block';
+
+  var displayBalanceElement = document.getElementById('displayBalance');
+  displayBalanceElement.innerHTML = '<h1>Balance '+ currentUser.getAmount()+'!</h1>';
+  displayBalanceElement.style.display = 'block';
+
+  document.getElementById('userrow').style.display = 'block';
+}
 
 function randomProduct() {
   
@@ -129,6 +145,7 @@ function randomProduct() {
     console.log('Available amount : ' + currentUser.getAmount() );
   }
 
+  refreshUserDetailsGamePage();
 }
 
 
@@ -152,4 +169,5 @@ function validateWins() {
     jackpotImgContainer.style.display = 'none';
     pairImgContainer.style.display = 'none';
   }
+
 }

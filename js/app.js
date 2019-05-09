@@ -21,8 +21,8 @@ function showStats() {
 
 function check() {
   window.scrollTo( 0, 0 );
-  document.getElementById('displayName').display='block';
-  document.getElementById('displayBalance').display='block';
+  //document.getElementById('displayName').display='block';
+  //document.getElementById('displayBalance').display='block';
   
   var selectId = document.getElementById('userList');
   selectId.innerHTML = '';
@@ -52,20 +52,26 @@ function createNewuser(event) {
 }
 
 function selectUser(event) {
+  console.log("in Select user");
   event.preventDefault();
   var e = document.getElementById('userList');
   var strUser = e.options[e.selectedIndex].value;
   
-  document.getElementById('stats').style.display = 'none';
-  document.getElementById('options').style.display = 'none';
-  document.getElementById('game').style.display = 'block';
   var displayNameId = document.getElementById('displayName');
   displayNameId.innerHTML = '<h1>Welcome '+ strUser+'!</h1>';
   displayNameId.style.display = 'block';
   document.getElementById('displayBalance').style.display = 'block';
+
+  currentUser = UserStore.setAndLoadCurrentUserByName(strUser);
+  var displayBalanceElement = document.getElementById('displayBalance');
+  displayBalanceElement.innerHTML = '<h1>Balance '+ currentUser.getAmount()+'!</h1>';
+  displayBalanceElement.style.display = 'block';
 }
 
 var newuserFormId = document.getElementById('newuser_form');
 var selectuserFormId = document.getElementById('selectuser_form');
 newuserFormId.addEventListener('submit', createNewuser);
 selectuserFormId.addEventListener('submit', selectUser);
+
+
+

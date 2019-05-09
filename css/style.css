@@ -1,6 +1,10 @@
 body {
     font-family: 'Open Sans';
 }
+main section{
+    margin-left: 40px;
+}
+
 h1{
     font-family: 'Open Sans';
     color: white;
@@ -69,6 +73,9 @@ header nav li {
     margin-top: 25px;
 }
 
+main {
+    width: 1050px;
+}
 main section {
     float: left; 
     padding-left: 100px;    
