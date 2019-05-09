@@ -49,6 +49,7 @@ function createNewuser(event) {
   UserStore.saveUser(userObj);
   newuserFormId.reset();
   check();
+  window.location = 'index.html';
 }
 
 function selectUser(event) {
@@ -60,6 +61,8 @@ function selectUser(event) {
   var currentUser = UserStore.setAndLoadCurrentUserByName(strUser);
 
   refreshUserDetailsOptionsPage();
+  window.location = 'index.html';
+
 
   // var displayNameId = document.getElementById('displayName');
   // displayNameId.innerHTML = '<h1>Welcome '+ strUser+'!</h1>';
