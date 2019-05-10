@@ -13,6 +13,9 @@ function onBootstrap() {
   allUsersListElement.innerHTML = '';
   var allUsers = UserStore.getAllUsers();
   console.log(allUsers);
+  if(allUsers === null){
+    window.location = 'index.html';
+  }
   for(var i=0; i < allUsers.length; i++){
     var liEle = document.createElement('li');
     liEle.innerHTML = allUsers[i].name;
@@ -24,6 +27,8 @@ function onBootstrap() {
     losses.push(allUsers[i].lossCount()); 
   }
   
+
+
   //for each user
   for (var j = 0; j < userNames.length; j++){
     // create the data set
