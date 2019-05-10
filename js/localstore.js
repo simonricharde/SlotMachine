@@ -28,6 +28,11 @@ User.prototype.getAmount = function() {
 User.prototype.lossCount = function() {
   return this.plays - (this.jackpots + this.pairs);
 };
+
+User.prototype.balance = function() {
+  return (this.pairs * pairValue + this.jackpots * jackpotValue ) - this.plays + initialAmount;
+};
+
 var UserStore = {};
 UserStore.getUser = function(userName) {
   var userStoreDataString = localStorage.getItem('userStoreData');
