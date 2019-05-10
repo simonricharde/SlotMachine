@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/options.css">
-    <link rel="stylesheet" href="css/stats.css">
 </head>
 
 <body background="img/backround.jpg" height="460" width="1000" onload="check()">
@@ -22,7 +21,6 @@
         </section>
     </header>
     <main>
-        
         <section id="userrow">
             <aside class="usercolumn" id="displayName" style="display: none">  
                 <h1>Welcome</h1>          
@@ -31,25 +29,17 @@
                     <h1>Balance: </h1>
             </aside>
         </section> 
-        <section id="game">
-            
-            <aside class="gamerow" id="gamerowid">
-                <img id="slot1" height="250" width="250">
-                <img id="slot2" height="250" width="250">
-                <img id="slot3" height="250" width="250">
 
-                <button id="start"></button>
-                <aside id="pairImage" style="display: none">
-                    <img id="pairImageslot" height="250" width="250">
+        <section id="options" class="toggle">
+            <!-- <aside class="gamerow">
+                <aside class="gamecolumn" id="displayName" style="display: none">  
+                    <h1>Welcome</h1>          
+                </aside>                       
+                <aside class="gamecolumn" id="displayBalance" style="display: none">
+                        <h1>Balance: </h1>
                 </aside>
-                <aside id="jackpotImage" style="display: none">
-                    <img id="jackpotImageslot" height="250" width="250">
-                </aside>
+            </aside> -->
 
-            </aside>
-        </section>
-    
-        <section id="options" class="toggle" style="display:none">
             <aside class="row">
                 <aside class="column">
                     <h1>Game Instructions</h1>
@@ -90,53 +80,20 @@
                     </form>
                     </h3>
                     <h3>
+                        <form id="resetuser_form">
                         <article class="article-class">
-                            <label for="fname">Game Settings</label>
-                            <select id="levelList">
-                                <option selected>Select</option>
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard">Hard</option>
-                            </select>
                             <label for="fname">Reset Balance</label>
                             <input type="submit" value="Reset Balance   (25$)">
                         </article>
+                      </form>
                     </h3>
                 </aside>
             </aside>
         </section>
 
-        <section id="stats" class="toggle" style="display:none">
-            <aside class="row">
-                <article class="players-class">
-                    <label for="fname">
-                        <h1>Top Players</h1>
-                    </label>
-                    <h3>
-                        <ol id="playerList">
-                            <li>Simon</li>
-                            <li>Simon</li>
-                            <li>Simon</li>
-                        </ol>
-                    </h3>
-                </article>
-
-                <aside class="column">
-                    <h1>Game Instructions</h1>
-
-                </aside>
-                <aside class="column">
-                    <h1>Game Instructions</h1>
-
-                </aside>
-                <aside class="column">
-                    <h1>Game Instructions</h1>
-
-                </aside>
-            </aside>
-        </section>
     </main>
     <script src="js/localstore.js"></script>
-    <script src="js/homepage.js"></script>
-    <footer> &copy; SlotMachine</footer>
+    <script src="js/app.js"></script>
+    <!-- <footer> &copy; SlotMachine</footer> -->
 </body>
+</html>

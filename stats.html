@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Slot Machine</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/options.css">
+    <link rel="stylesheet" href="css/stats.css">
+</head>
+
+<body background="img/backround.jpg" height="460" width="1000" onload="check()">
+    <header>
+        <section>
+            <nav>
+                <ul id="nav">
+                  <li><a href="index.html#game" >Game</a></li>
+                  <li><a href="options.html" >Options</a></li>
+                  <li><a href="stats.html" >Stats</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <section id="stats" class="toggle">
+          <aside class="gamerow">
+              <aside class="gamecolumn" id="displayName" style="display: none">  
+                  <h1>Welcome</h1>          
+              </aside>                       
+              <aside class="gamecolumn" id="displayBalance" style="display: none">
+                      <h1>Balance: </h1>
+              </aside>
+          </aside>
+
+            <aside class="row">
+                <article class="players-class">
+                    <label for="fname">
+                        <h1>Top Players</h1>
+                    </label>
+                    <h3>
+                        <ol id="playerList">
+                            <li>Simon</li>
+                            <li>Simon</li>
+                            <li>Simon</li>
+                        </ol>
+                    </h3>
+                </article>
+
+                <aside class="column">
+                    <h1>Game Instructions</h1>
+
+                </aside>
+                <aside class="column">
+                    <h1>Game Instructions</h1>
+
+                </aside>
+                <aside class="column">
+                    <h1>Game Instructions</h1>
+
+                </aside>
+            </aside>
+        </section>
+    </main>
+    <script src="js/localstore.js"></script>
+    <script src="js/stats.js"></script>
+    <!-- <footer> &copy; SlotMachine</footer> -->
+</body>

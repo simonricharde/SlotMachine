@@ -90,9 +90,9 @@ function gameOver() {
   imgContainer2.src = SpecImages.allSpecImages[1].filepath;
 }
 var currentUser = null;
-OnBootstrap();
+onBootstrap();
 
-function OnBootstrap() {
+function onBootstrap() {
   console.log( UserStore.getCurrentUser());
   currentUser = UserStore.getCurrentUser();
   // for testing
@@ -100,27 +100,61 @@ function OnBootstrap() {
     // redirect to options page . window.locaton = /options.html
     // showOptions();
     console.log('in null and ser');
-    currentUser = new User('testUser');
-    UserStore.saveUser(currentUser);
-    console.log(currentUser );
+    window.location = 'options.html';
+  }else{
+    console.log(currentUser);
+    refreshUserDetailsGamePage();
   }
 }
 
+function refreshUserDetailsGamePage(){
+  currentUser = UserStore.getCurrentUser();
+  var displayNameId = document.getElementById('displayName');
+  displayNameId.innerHTML = '<h1>Welcome '+ currentUser.name+'!</h1>';
+  displayNameId.style.display = 'block';
+
+  var displayBalanceElement = document.getElementById('displayBalance');
+  displayBalanceElement.innerHTML = '<h1>Balance '+ currentUser.getAmount()+'!</h1>';
+  displayBalanceElement.style.display = 'block';
+
+  document.getElementById('userrow').style.display = 'block';
+}
 
 function randomProduct() {
-  
   if (currentUser.getAmount()>0) {
     var randomIdx = Math.floor(Math.random() * Product.allProducts.length);
     var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
     var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
 
+    var gamerow = document.getElementById('gamerowid');
+    gamerow.removeChild(imgContainer);
+    imgContainer = document.createElement('img'); // create new img
     imgContainer.src = Product.allProducts[randomIdx].filepath;
+    imgContainer.setAttribute('class','animation0 blinking0');
+    imgContainer.setAttribute('id','slot1');
+    console.log(imgContainer);
+    gamerow.prepend(imgContainer);
+
+    gamerow.removeChild(imgContainer1);
+    imgContainer1 = document.createElement('img'); // create new img
     imgContainer1.src = Product.allProducts[randomIdxNS1].filepath;
+    imgContainer1.setAttribute('class','animation1 blinking1');
+    imgContainer1.setAttribute('id','slot2');
+    console.log(imgContainer1);
+    gamerow.prepend(imgContainer1);
+
+    gamerow.removeChild(imgContainer2);
+    imgContainer2 = document.createElement('img'); // create new img
     imgContainer2.src = Product.allProducts[randomIdxNS2].filepath;
+    imgContainer2.setAttribute('class','animation2 blinking2');
+    imgContainer2.setAttribute('id','slot3');
+    console.log(imgContainer2);
+    gamerow.prepend(imgContainer2);
+
     lastVisited = [randomIdx,randomIdxNS1,randomIdxNS2];
     currentUser.plays = currentUser.plays + 1 ;
     validateWins();
-    UserStore.saveUser(currentUser); 
+    UserStore.saveUser(currentUser);
   } else if (currentUser.getAmount()<1) {
     imgContainer.src = SpecImages.allSpecImages[1].filepath;
     imgContainer1.src = SpecImages.allSpecImages[1].filepath;
@@ -129,10 +163,12 @@ function randomProduct() {
     console.log('Available amount : ' + currentUser.getAmount() );
   }
 
+  refreshUserDetailsGamePage();
 }
 
 
 function validateWins() {
+  console.log('in valiodate wins');
   var left = Product.allProducts[lastVisited[0]];
   var mid = Product.allProducts[lastVisited[1]];
   var right = Product.allProducts[lastVisited[2]];
@@ -140,16 +176,19 @@ function validateWins() {
         mid === left && mid === right ||
         right === mid && right === left)
   { //jackpot
-    currentUser.jackpotValue = currentUser.jackpotValue + 1;
+    currentUser.jackpots = currentUser.jackpots + 1;
     jackpotImgContainer.style.display = 'block';
   } else if (left === mid && left !== right ||
             mid !== left && mid === right ||
             right === mid && right !== left ) {
     //pair
-    currentUser.pairValue = currentUser.pairValue + 1;    
+    currentUser.pairs = currentUser.pairs + 1;
     pairImgContainer.style.display = 'block';
   } else {
     jackpotImgContainer.style.display = 'none';
     pairImgContainer.style.display = 'none';
   }
+
+  console.log(currentUser);
+
 }
