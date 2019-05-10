@@ -130,9 +130,33 @@ function randomProduct() {
     var randomIdxNS1 = Math.floor(Math.random() * Product.allProducts.length);
     var randomIdxNS2 = Math.floor(Math.random() * Product.allProducts.length);
 
+    var gamerow = document.getElementById('gamerowid');
+    gamerow.removeChild(imgContainer);
+    imgContainer = document.createElement('img'); // create new img
     imgContainer.src = Product.allProducts[randomIdx].filepath;
+    imgContainer.setAttribute('class','animation0 blinking0');
+    imgContainer.setAttribute('id','slot1');
+    console.log(imgContainer);
+    gamerow.prepend(imgContainer);
+
+    gamerow.removeChild(imgContainer1);
+    imgContainer1 = document.createElement('img'); // create new img
     imgContainer1.src = Product.allProducts[randomIdxNS1].filepath;
+    imgContainer1.setAttribute('class','animation1 blinking1');
+    imgContainer1.setAttribute('id','slot2');
+    console.log(imgContainer1);
+    gamerow.prepend(imgContainer1);
+
+    gamerow.removeChild(imgContainer2);
+    imgContainer2 = document.createElement('img'); // create new img
     imgContainer2.src = Product.allProducts[randomIdxNS2].filepath;
+    imgContainer2.setAttribute('class','animation2 blinking2');
+    imgContainer2.setAttribute('id','slot3');
+    console.log(imgContainer2);
+    gamerow.prepend(imgContainer2);
+
+    // imgContainer1.src = Product.allProducts[randomIdxNS1].filepath;
+    // imgContainer2.src = Product.allProducts[randomIdxNS2].filepath;
     lastVisited = [randomIdx,randomIdxNS1,randomIdxNS2];
     currentUser.plays = currentUser.plays + 1 ;
     validateWins();
