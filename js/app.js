@@ -8,6 +8,16 @@ selectuserFormId.addEventListener('submit', selectUser);
 var resetuserFormId = document.getElementById('resetuser_form');
 resetuserFormId.addEventListener('submit', resetUserBalance);
 
+var clearLocalStorageform = document.getElementById('clearLocalStorageForm');
+clearLocalStorageform.addEventListener('submit', clearLocalData);
+
+function clearLocalData(event){
+  console.log('in clearLocalData');
+  event.preventDefault();
+  window.localStorage.clear();
+  check();
+}
+
 
 function check() {
   window.scrollTo( 0, 0 );
