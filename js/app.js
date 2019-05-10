@@ -74,3 +74,4 @@ function refreshUserDetailsOptionsPage(){
   displayBalanceElement.innerHTML = '<h1>Balance '+ currentUser.getAmount()+'!</h1>';
   displayBalanceElement.style.display = 'block';
 }
+refreshUserDetailsOptionsPage()
