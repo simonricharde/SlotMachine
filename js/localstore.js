@@ -13,6 +13,7 @@ User.prototype.resetUser = function() {
   this.pairs = 0;
   console.log('in reset');
   console.log(this)
+  
 }
 
 var initialAmount = 25;

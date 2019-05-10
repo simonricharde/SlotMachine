@@ -174,6 +174,7 @@ function randomProduct() {
 
 
 function validateWins() {
+  console.log('in valiodate wins');
   var left = Product.allProducts[lastVisited[0]];
   var mid = Product.allProducts[lastVisited[1]];
   var right = Product.allProducts[lastVisited[2]];
@@ -181,17 +182,19 @@ function validateWins() {
         mid === left && mid === right ||
         right === mid && right === left)
   { //jackpot
-    currentUser.jackpotValue = currentUser.jackpotValue + 20;
+    currentUser.jackpots = currentUser.jackpots + 1;
     jackpotImgContainer.style.display = 'block';
   } else if (left === mid && left !== right ||
             mid !== left && mid === right ||
             right === mid && right !== left ) {
     //pair
-    currentUser.pairValue = currentUser.pairValue + 5;    
+    currentUser.pairs = currentUser.pairs + 1;    
     pairImgContainer.style.display = 'block';
   } else {
     jackpotImgContainer.style.display = 'none';
     pairImgContainer.style.display = 'none';
   }
+
+  console.log(currentUser);
 
 }
