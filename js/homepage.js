@@ -181,13 +181,13 @@ function validateWins() {
         mid === left && mid === right ||
         right === mid && right === left)
   { //jackpot
-    currentUser.jackpotValue = currentUser.jackpotValue + 1;
+    currentUser.jackpotValue = currentUser.jackpotValue + 20;
     jackpotImgContainer.style.display = 'block';
   } else if (left === mid && left !== right ||
             mid !== left && mid === right ||
             right === mid && right !== left ) {
     //pair
-    currentUser.pairValue = currentUser.pairValue + 1;    
+    currentUser.pairValue = currentUser.pairValue + 5;    
     pairImgContainer.style.display = 'block';
   } else {
     jackpotImgContainer.style.display = 'none';

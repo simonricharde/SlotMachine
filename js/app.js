@@ -1,6 +1,13 @@
 /* eslint-disable eol-last */
 /* eslint-disable no-unused-vars */
 'use strict';
+var newuserFormId = document.getElementById('newuser_form');
+newuserFormId.addEventListener('submit', createNewuser);
+var selectuserFormId = document.getElementById('selectuser_form');
+selectuserFormId.addEventListener('submit', selectUser);
+var resetuserFormId = document.getElementById('resetuser_form');
+resetuserFormId.addEventListener('submit', resetUserBalance);
+
 
 function check() {
   window.scrollTo( 0, 0 );
@@ -43,19 +50,6 @@ function selectUser(event) {
   refreshUserDetailsOptionsPage();
   window.location = 'index.html';
 }
-
-
-function OnBootstrap() {
-  var newuserFormId = document.getElementById('newuser_form');
-  var selectuserFormId = document.getElementById('selectuser_form');
-  newuserFormId.addEventListener('submit', createNewuser);
-  selectuserFormId.addEventListener('submit', selectUser);
-
-  var resetuserFormId = document.getElementById('resetuser_form');
-  resetuserFormId.addEventListener('submit', resetUserBalance);
-
-}  
-OnBootstrap();
 
 
 function resetUserBalance(event) {
