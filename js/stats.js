@@ -1,6 +1,6 @@
 'use strict';
 
-function OnBootstrap() {
+function onBootstrap() {
   console.log( UserStore.getCurrentUser());
   var allUsersListElement = document.getElementById('playerList');
   allUsersListElement.innerHTML = '';
@@ -11,5 +11,5 @@ function OnBootstrap() {
     liEle.innerHTML = allUsers[i].name;
     allUsersListElement.appendChild(liEle);
   }
-}  
-OnBootstrap();
+}
+onBootstrap();

@@ -53,7 +53,7 @@ function selectUser(event) {
 
 
 function resetUserBalance(event) {
-  console.log("in resetUserBalance user");
+  console.log('in resetUserBalance user');
   event.preventDefault();
   var currentUser = UserStore.getCurrentUser();
   console.log(currentUser);
@@ -74,4 +74,4 @@ function refreshUserDetailsOptionsPage(){
   displayBalanceElement.innerHTML = '<h1>Balance '+ currentUser.getAmount()+'!</h1>';
   displayBalanceElement.style.display = 'block';
 }
-refreshUserDetailsOptionsPage()
+refreshUserDetailsOptionsPage();
